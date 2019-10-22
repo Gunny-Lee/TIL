@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="./07_position.css">
+</head>
+<body>
+  <h2>1. Static(기본위치-좌상단부터 쌓임)</h2>
+  <div>static</div>
+  <div>static</div>
+
+  <h2>2. Absolute1 : 모든 부모가 static인경우</h2>
+  <!-- 부모가 Static -->
+  <div class="parent">
+    <div class="absolute">Absolute1</div>
+  </div>
+
+  <h2>3. Absolute2 : 부모 중에 static이 아닌 가장 가까운 부모 기준</h2>
+  <div class="parent relative">
+    relative
+    <div class="absolute">Absolute2</div>
+  </div>
+
+</body>
+</html>

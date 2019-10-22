@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatitable" content="ie=edge">
+    <title>마크업 연습 - 프로그래밍 교육</title>
+    <style>
+        td {
+          border: 1px solid darkgray;
+        }
+      </style>
+  </head>
+  <body>
+    <h1>2019 타임테이블</h1>
+    <table summary="락페 시간표로 총 3개 극장에서 10시부터 시작함">
+      <!-- caption : 표 제목! 무조건 table의 첫 번째 자식으로 와야 함 -->
+      <caption>
+        <h1>2019 타임테이블</h1>
+      </caption>
+      <!-- thead 한번만 선언가능 -->
+      <thead>
+      <tr>
+        <th>TIME</th>
+        <th>INDOOR</th>
+        <th colspan="2">OUTDOOR</th>
+        
+      </tr>
+    </thead>
+  <tbody>
+      <tr>
+        <td></td>
+        <td>소극장</td>
+        <td>잔디마당</td>
+        <td>대공연장</td>
+      </tr>
+      <tr>
+        <td>10:00</td>
+        <td rowspan="2">안녕하신가영</td>
+        <td></td>
+        <td>10cm</td>
+      </tr>
+      <tr>
+          <td>13:00</td>
+          <td rowspan="2">선우정아</td>
+          <td rowspan="2">참깨와 솜사탕</td>
+        </tr>
+        <tr>
+            <td>15:00</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>17:00</td>
+            <td>크러쉬</td>
+            <td></td>
+            <td>폴킴</td>
+          </tr>
+        </tbody>
+        <!-- tfoot -->
+        <tfoot>
+          
+        </tfoot>
+    </table>
+  </body>
+</html>
