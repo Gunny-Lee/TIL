@@ -1,0 +1,17 @@
+{% load static %}
+{% comment %} 위에걸 선언해줘야 이용 가능 {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Static 파일 실습</title>
+  <link rel="stylesheet" href="{% static 'pages/stylesheets/sample.css' %}">
+</head>
+<body>
+  <h1>정적 파일 출력을 실습해봅시다!</h1>
+  <img src="{% static 'pages/images/see.jpg' %}" alt="iu">
+</body>
+</html>

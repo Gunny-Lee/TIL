@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h1 class="text-center"> EDIT </h1>
+<form action="/movieapp/{{ movie.pk }}/update/" method="POST">
+    {% csrf_token %}
+    <label for="title">제목</label>
+    <input type="text" id="title" name="title" value="{{ movie.title }}"><br>
+    <label for="title_en">영문제목</label>
+    <input type="text" id="title_en" name="title_en" value="{{ movie.title_en }}"><br>
+    <label for="audience">관객수</label>
+    <input type="number" id="audience" name="audience" value="{{ movie.audience }}"><br>
+    <label for="open_date">개봉일자</label>
+    <input type="date" id="open_date" name="open_date"><br>
+    <label for="genre">장르</label>
+    <input type="text" id="genre" name="genre" value="{{ movie.genre }}"><br>
+    <label for="watch_grade">관람가</label>
+    <input type="text" id="watch_grade" name="watch_grade" value="{{ movie.watch_grade }}"><br>
+    <label for="score">평점</label>
+    <input type="number" id="score" name="score" step="0.01" value="{{ movie.score }}"><br>
+    <label for="poster_url">포스터</label>
+    <input type="text" id="poster_url" name="poster_url" value="{{ movie.poster_url }}"><br>
+    <label for="description">요약</label>
+    <textarea name="description" cols="30" rows="10"> {{ movie.description }}</textarea><br>
+    <input type="submit">
+</form>
+<hr>
+<a href="/movieapp/{{ movie.pk }}/"> BACK </a>
+{% endblock body %}

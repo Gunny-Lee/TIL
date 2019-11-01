@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<h1 class="text-center"> Articles 페이지에 당도한 것을 환영하오 낮선이여 </h1>
+<a href="/articles/new/">NEW</a>
+<hr>
+{% for article in articles %}
+<p> [{{ article.pk }}] {{article.title}} <p>
+<a href="{% url 'articles:detail' article.pk %}">DETAIL</a>
+{% comment %} <p> 글 번호: {{article.pk}} </p>
+<p> 글 제목: {{article.title}} </p>
+<p> 글 내용: {{article.content}} </p>
+<p> 생성 시각: {{article.created_at}} </p>
+<p> 수정 시각: {{article.updated_at}} </p> {% endcomment %}
+<hr>
+{% endfor %}
+{% endblock body %}
+

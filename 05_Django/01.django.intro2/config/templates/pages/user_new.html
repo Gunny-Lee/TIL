@@ -1,0 +1,7 @@
+<form action="/pages/user_create/" method="POST">
+  {% csrf_token %}
+  {% comment %} 위에 {% csrf_token %} 토큰은 POST 방식에서 무조건 필요! {% endcomment %}
+  <input type="text" name="ud">
+  <input type="password" name="pwd">
+  <input type="submit" value="가입하기">
+</form>
