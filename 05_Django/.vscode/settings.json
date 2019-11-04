@@ -1,5 +1,5 @@
 {
-  "python.pythonPath": "venv\\Scripts\\python.exe",
+  "python.pythonPath": "c:\\Users\\student\\Desktop\\TIL\\05_Django\\venv\\Scripts\\python.exe",
   
   "files.associations": {
     "**/*.html": "html",

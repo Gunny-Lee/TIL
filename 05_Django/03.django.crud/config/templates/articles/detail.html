@@ -9,6 +9,10 @@
 <p> 수정 시각: {{article.updated_at}} </p>
 <hr>
 <a href="{% url 'articles:index' %}">BACK</a>
-<a href="/articles/{{article.pk}}/edit/">EDIT</a>
-<a href="/articles/{{article.pk}}/delete/">delete</a>
+<a href="/articles/{{article.pk}}/update/">EDIT</a>
+{% comment %} <a href="/articles/{{article.pk}}/delete/">delete</a> {% endcomment %}
+<form action="{% url 'articles:delete' article.pk %}" method="POST" style="display:inline;" onclick="return confirm('ㄹㅇ 삭제함???')">
+  {% csrf_token %}
+  <input type="submit" value="DELETE">
+</form>
 {% endblock body %}
