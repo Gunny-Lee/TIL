@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
+{% load static %}
 
 
 {% block body %}
+{% comment %} static file 저장해서 제일 좋아하는 사진 띄우기 {% endcomment %}
+<h1>정적 파일 출력해보기</h1>
+{% comment %} <img src="{% static 'listen.png' %}" alt="listen" style="display:block; margin:0px auto;" width="300", height="300"> {% endcomment %}
+
 <h1 class="text-center"> Articles 페이지에 당도한 것을 환영하오 낮선이여 </h1>
 <a href="/articles/create/">NEW</a>
 <hr>

@@ -2,6 +2,21 @@
 
 {% block body %}
 <h1 class="text-center">DETAIL</h1>
+{% comment %}
+  article.image.url : 파일 주소
+  article.image : 파일 이름(sample.png)
+{% endcomment %}
+{% comment %} 
+  샘플 이미지(static)를 넣어두고, 이미지 없는 게시글은 샘플 이미지가 나오도록 한다
+  이미지 있는 경우에만 이미지를 보여준다
+{% endcomment %}
+{% if article.image %}
+  <img src="{{article.image.url}}" alt="{{article.image}}">
+{% else %}
+  <p>사진이 없어요...</p>
+  <img src="{% static 'articles/images/no_image.jpg' %}" alt="no_image">
+{% endif %}
+
 <p> 글 번호: {{article.pk}} </p>
 <p> 글 제목: {{article.title}} </p>
 <p> 글 내용: {{article.content}} </p>
@@ -15,4 +30,25 @@
   {% csrf_token %}
   <input type="submit" value="DELETE">
 </form>
+<hr>
+<form action="{% url 'articles:comments_create' article.pk %}" method="POST">
+  {% csrf_token %}
+  <input type="text" name="content">
+  <input type="submit" value="댓글작성">
+</form>
+<hr>
+<p>
+  <b>{{ comments|length }}개의 댓글이 있습니다.</b>
+  {{ article.comment_set.all|length }}
+  {{ comments.count }}
+</p>
+{% for comment in comments %}
+<li>
+  {{ comment.content }}
+  <form action="{% url 'articles:comments_delete' article.pk comment.pk %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="DELETE">
+  </form>
+</li>
+{% endfor %}
 {% endblock body %}

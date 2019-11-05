@@ -3,13 +3,22 @@
 
 {% block body %}
 <h1 class="text-center"> NEW </h1>
-<form action="/articles/create/" method="POST">
+
+{% comment %} 
+  enctype
+  1. application/x-www-urlencoded : (기본값) 모든 문자 인코딩
+  2. multipart/form-data : 파일 형태 첨부시 필수 사용 / 데이터를 나누어 전송한다.
+{% endcomment %}
+
+<form action="/articles/create/" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   <label for="title">제목</label>
   <input type="text" id="title" name="title"><br>
   
   <label for="content">내용</label>
   <textarea name="content" cols="30" rows="10"></textarea><br>
+  <label for="image">IMAGE</label>
+  <input type="file" name="image" id="image" accept="image/*">
   <input type="submit">
   </form>
 <hr>
