@@ -8,4 +8,6 @@ urlpatterns = [
     path('<int:article_pk>/', views.detail, name='detail'),    # READ Logic - Detail
     path('<int:article_pk>/delete/', views.delete, name='delete'),    # READ Logic - Detail
     path('<int:article_pk>/update/', views.update, name='update'),    # READ Logic - Detail
+    path('<int:article_pk>/comments/', views.comments_create, name='comments_create'),
+    path('<int:article_pk>/comments/<int:comment_pk>/delete/', views.comments_delete, name='comments_delete'),
 ]
