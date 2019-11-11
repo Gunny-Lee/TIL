@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block body %}
+<h1>회원정보수정</h1>
+<hr>
+<form action="" method="POST"></form>
+{% csrf_token %}
+{% bootstrap_form form %}
+{% buttons submit%}
+{% endblock body %}

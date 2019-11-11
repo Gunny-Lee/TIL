@@ -46,12 +46,14 @@ def detail(request, article_pk):
 
 @require_POST
 def delete(request, article_pk):
-    article = get_object_or_404(Article, pk=article_pk)
-    # if request.method == 'POST':
-    article.delete()
+    if request.user.is_authenticated:
+        article = get_object_or_404(Article, pk=article_pk)
+        # if request.method == 'POST':
+        article.delete()
     return redirect('articles:index')
     # else:
         # return redirect('articles:detail', article.pk)
+
 
 def update(request, article_pk):
     article = get_object_or_404(Article, pk=article_pk)
@@ -78,14 +80,15 @@ def update(request, article_pk):
 @require_POST # POST요청만 있는 경우 사용가능
 def comments_create(request, article_pk):
     article = get_object_or_404(Article, pk=article_pk)
-    comment_form = CommentForm(request.POST)
-    if comment_form.is_valid():
-            # save 메서드 -> 선택 인자 : (기본값) commit=True
-            # commit=False : DB에 바로 저장되는 것을 막아준다
-        comment = comment_form.save(commit=False)
-        comment.article = article
-        comment.save()
-        return redirect('articles:detail', article.pk)
+    if request.user.is_authenticated:
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+                # save 메서드 -> 선택 인자 : (기본값) commit=True
+                # commit=False : DB에 바로 저장되는 것을 막아준다
+            comment = comment_form.save(commit=False)
+            comment.article = article
+            comment.save()
+            return redirect('articles:detail', article.pk)
     return redirect('articles:detail', article.pk)
 
 # def comments_create(request, article_pk):
