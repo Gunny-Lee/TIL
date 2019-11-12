@@ -15,19 +15,42 @@
 </form>
 
 <a href="{% url 'articles:index' %}">[BACK]</a>
-<a href="{% url 'articles:update' article.pk %}">[EDIT]</a><hr>
-<form action="{% url 'articles:comments_create' article.pk %}" method="POST">
+{% if request.user == article.user %}
+  <a href="{% url 'articles:update' article.pk %}">[EDIT]</a>
+  <form action="{% url 'articles:delete' article.pk %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="DELETE">
+  </form>
+{% endif %}
+
+{% comment %} <form action="{% url 'articles:comments_create' article.pk %}" method="POST">
 {% csrf_token %}
 <input type="text" name="content">
 <input type="submit" value="댓글작성">
-</form>
+</form> {% endcomment %}
+
+{% if user.is_authenticated %}
+  <form action="{% url 'articles:comments_create' article.pk %}" method="POST">
+    {% csrf_token %}
+    {{ comment_form }}
+    <input type="submit" value="댓글작성">
+  </form>
+{% else %}
+  <a href="{% url 'accounts:login' %}">[댓글 작성하려면 로그인 해주세요]</a>
+{% endif %}
 <hr>
 <p><b>댓글목록({{comments|length}}개)</b></p>
 {% for comment in comments %}
   <p>[{{forloop.revcounter}}]{{comment.content}}</p>
-  <form action="{% url 'articles:comments_delete' article.pk comment.pk %}" method="POST">
+  {% comment %} <form action="{% url 'articles:comments_delete' article.pk comment.pk %}" method="POST">
     {% csrf_token %}
     <input type="submit" value="DELETE">
-  </form>
+  </form> {% endcomment %}
+  {% if comment.user == user %}
+    <form action="{% url 'articles:comments_delete' article.pk comment.pk %}" method="POST" style="display: inline;">
+    {% csrf_token %}
+      <input type="submit" value="DELETE">
+    </form>
+  {% endif %}
 {% endfor %}
 {% endblock %}
