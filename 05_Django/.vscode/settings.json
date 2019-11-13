@@ -15,4 +15,8 @@
 "[django-html]": {
     "editor.tabSize": 2
 },
+"python.linting.pylintArgs":[
+    "--load-plugins=pylint_django",
+    "--errors-only",
+]
 }

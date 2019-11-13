@@ -8,11 +8,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  {% comment %} {% bootstrap_css %}
+</head>
+<body> {% endcomment %}
+  <!-- Bootstrap -->
   {% bootstrap_css %}
+  <!-- FontAwesome -->
+  <script src="https://kit.fontawesome.com/c6d30f413c.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  {% include 'articles/_nav.html' %}
   <div class="container">
-    <!-- 로그인했을 경우 -->
+    {% comment %} <!-- 로그인했을 경우 -->
     {% if user.is_authenticated %}
       <h2>
         <img class="rounded-circle" src="https://s.gravatar.com/avatar/{{ user.email|makemd5 }}?s=80&d=https://anotherjavaduke.files.wordpress.com/2018/08/avataaars-2.png" alt="">
@@ -33,7 +40,7 @@
       <a href="{% url 'accounts:login' %}">로그인</a>
       <a href="{% url 'accounts:signup' %}">회원가입</a>
     {% endif %}
-    <hr>
+    <hr> {% endcomment %}
     {% block body %}
     {% endblock %}
   </div>

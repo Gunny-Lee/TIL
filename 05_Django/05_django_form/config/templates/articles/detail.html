@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block body %}
+{% include 'articles/_follow.html' %}
 <h1>DETAIL</h1>
 <hr>
 <p>글 번호 : {{ article.pk }}</p>
@@ -9,10 +10,10 @@
 <p>글 생성 시각 : {{ article.created_at }}</p>
 <p>글 수정 시각 : {{ article.updated_at }}</p>
 <hr>
-<form action="{% url 'articles:delete' article.pk %}" method="POST" style="display:inline;" onclick="return confirm('ㄹㅇ 삭제함???')">
+{% comment %} <form action="{% url 'articles:delete' article.pk %}" method="POST" style="display:inline;" onclick="return confirm('ㄹㅇ 삭제함???')">
   {% csrf_token %}
   <input type="submit" value="DELETE">
-</form>
+</form> {% endcomment %}
 
 <a href="{% url 'articles:index' %}">[BACK]</a>
 {% if request.user == article.user %}
