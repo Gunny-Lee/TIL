@@ -164,14 +164,9 @@ def follow(request, article_pk, user_pk):
     person = get_object_or_404(get_user_model(), pk=user_pk)
     # 지금 접속하고 있는 유저
     user = request.user
-
     # 게시글 작성 유저의 팔로워 목록에 접속 중인 유저가 있을 경우
     # -> Unfollow
-    if user in person.followers.all():
-        person.followers.remove(user)
     # 목록에 없으면 -> Follow
-    else:
-        person.followers.add(user)
     # 게시글 상세정보로 redirect
     if person != user:
         if user in person.followers.all():

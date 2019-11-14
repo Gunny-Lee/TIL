@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block body %}
+<h1>로그인</h1><hr>
+<form action="" method="POST">
+{% csrf_token %}
+{% bootstrap_form form layout='inline' %}
+{% buttons submit="로그인"%}
+{% endbuttons %}
+
+{% comment %} {{form.as_p}}
+<input type="submit"> {% endcomment %}
+
+</form>
+{% endblock body %}
